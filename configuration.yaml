@@ -1,0 +1,274 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Michael Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secretlatitude
+  longitude: !secretlongitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 229
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+  
+  customize: !include customize.yaml
+  
+
+# Enables the frontend
+frontend:
+
+http:
+  api_password: !secretpassword
+  
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+#ifttt
+ifttt:
+  key: !secretkey
+  
+# Weather Prediction
+sensor:
+  platform: yr
+
+# Text to speech
+tts:
+  platform: google
+
+#automation
+automation: !include automation.yaml
+  
+    
+script:
+  timed_lamp:
+    alias: "Turn on lamp and set timer"
+    sequence:
+      # Cancel ev. old timers
+      - service: script.turn_off
+        data:
+           entity_id: script.timer_off
+      - service: switch.turn_on
+        data:
+          entity_id: switch.bike_room_light
+      # Set new timer
+      - service: script.turn_on
+        data:
+          entity_id: script.timer_off
+
+  timer_off:
+    alias: "Turn off lamp after 2 minutes"
+    sequence:
+      - delay:
+          minutes: 1
+          seconds: 30
+      - service: switch.turn_off
+        data:
+          entity_id: switch.bike_room_light    
+
+#zwave
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.1-py3.4-linux-armv7l.egg/config
+
+
+media_player 1:
+  platform: kodi
+  name: Michaels Kodi
+  host: http://192.168.0.148
+  
+
+
+#Weather Map
+camera:
+  platform: generic
+  still_image_url: https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=ILX&brand=wui&num=10&delay=15&type=N0R&frame=0&scale=1.000&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=400&centery=240&transx=0&transy=0&showlabels=1&severe=0&rainsnow=1&lightning=0&smooth=0&rand=24716163&lat=0&lon=0&label=you
+  name: !secretname 
+  
+camera 2:
+  name: Michaels Location
+  platform: generic
+  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.m_phone_m_phone.attributes.latitude }},{{ states.device_tracker.m_phone_m_phone.attributes.longitude }}&zoom=13&size=500x500&maptype=roadmap&markers=color:red%7Clabel:Michael%7C{{ states.device_tracker.m_phone_m_phone.attributes.latitude }},{{ states.device_tracker.m_phone_m_phone.attributes.longitude }}
+  limit_refetch_to_url_change: true
+  
+camera 3:
+  name: Brittanys Location
+  platform: generic
+  still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.b_phone_b_phone.attributes.latitude }},{{ states.device_tracker.b_phone_b_phone.attributes.longitude }}&zoom=13&size=500x500&maptype=roadmap&markers=color:red%7Clabel:Brittany%7C{{ states.device_tracker.b_phone_b_phone.attributes.latitude }},{{ states.device_tracker.b_phone_b_phone.attributes.longitude }}
+  limit_refetch_to_url_change: true  
+  
+  
+sensor 2:
+  platform: darksky
+  api_key: !secretapi
+  monitored_conditions:
+   - summary
+   - temperature
+   - wind_speed
+   - humidity
+   - cloud_cover
+   - apparent_temperature
+   - precip_type 
+   - precip_probability
+   - daily_summary
+   - temperature_max
+   - temperature_min
+  
+
+#cpu
+sensor 3:
+  platform: speedtest
+  minute:
+    - 0
+    - 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+    
+sensor 4:
+  platform: cpuspeed
+  name: CPU
+  
+sensor 5:
+  platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_free
+    - type: processor_use  
+  
+sensor 6:
+  - platform: google_travel_time
+    name: Home to Work
+    api_key: !secretapi
+    origin: zone.home
+    destination: zone.work
+  
+  - platform: google_travel_time
+    name: Work To Home
+    api_key: !secretapi
+    origin: zone.work
+    destination: zone.home
+    
+  - platform: google_travel_time
+    name: Michaels Home to Parents Home
+    api_key: !secretapi
+    origin: zone.home
+    destination: !secretlocation
+  
+  - platform: google_travel_time
+    name: Michaels Home to Parents Home
+    api_key: !secretapi
+    origin: !secretlocation
+    destination: zone.home
+  
+
+  - platform: google_travel_time
+    name: Home to Brittanys Parents Home
+    api_key: !secretapi
+    origin: zone.home
+    destination: !secretlocation
+  
+  - platform: google_travel_time
+    name: Brittanys Parents Home to Home
+    api_key: !secretapi
+    origin: !secretlocation
+    destination: zone.home
+  
+
+  - platform: google_travel_time
+    name: Home to Brittany
+    api_key: !secretapi
+    origin: zone.home
+    destination: !secretlocation
+  
+  - platform: google_travel_time
+    name: Brittany to Home
+    api_key: !secretapi
+    origin: !secretlocation
+    destination: zone.home
+  
+  
+      
+#Switches      
+switch: !include switch.yaml
+
+#MQTT Private Server
+mqtt:
+  broker: m13.cloudmqtt.com
+  port: !secretport
+  client_id: !secretclientid
+  keepalive: 60
+  username: !secretusername
+  password: !secretpassword
+
+
+#Owntracks Tracker
+device_tracker:
+  - platform: owntracks
+  
+ 
+###########################################  
+##Zones                                   #
+###########################################
+zone:
+  name: Home
+  latitude: !secretlatitude
+  longitude: !secretlongitude
+  radius: 200
+  icon: mdi:account-multiple
+
+zone 2:
+  name: Work
+  latitude: !secretlatitude
+  longitude: !secretlongitude
+  radius: 200
+  icon: mdi:coin
+
+zone 3:
+  name: Parents House
+  latitude: !secretlatitude
+  longitude: !secretlongitude
+  radius: 200
+  icon: mdi:account-multiple
+  
+zone 4:
+  name: Brittanys Parents House
+  latitude: !secretlatitude
+  longitude: !secretlongitude
+  radius: 400
+  icon: mdi:account-multiple  
+  
+zone 5:
+  name: Brittanys Aparment
+  latitude: !secretlatitude
+  longitude: !secretlongitude
+  radius: 400
+  icon: mdi:account-multiple  
+    
+  
+
+###########################################  
+##Groups                                  #
+###########################################
+group: !include groups.yaml
+
+
+
+

@@ -1,0 +1,174 @@
+#################################################################
+## Customize                                                    #
+#################################################################
+
+ sensor.speedtest_download:
+   friendly_name: Download Speed
+   icon: mdi:download
+   
+ sensor.speedtest_ping:
+   friendly_name: Ping
+   icon: mdi:pin
+   
+ sensor.speedtest_upload:
+   friendly_name: Upload Speed
+   icon: mdi:upload   
+   
+ sensor.dark_sky_summary:
+   friendly_name: Todays Forecast
+   icon: mdi:briefcase
+   
+ sensor.dark_sky_temperature:
+   friendly_name: Current Temperature
+   
+ sensor.dark_sky_apparent_temperature:
+   friendly_name: Feels Like
+      
+ sensor.dark_sky_cloud_coverage:
+   friendly_name: Cloud Coverage
+     
+ sensor.dark_sky_daily_high_temperature:
+   friendly_name: Todays High Temperature
+    
+ sensor.dark_sky_daily_low_temperature:
+   friendly_name: Todays Low Temperature
+   
+ sensor.dark_sky_wind_speed:
+   friendly_name: Current Wind Speed
+   
+ sensor.dark_sky_humidity:
+   friendly_name: Current Humitidy
+   
+ sensor.dark_sky_precip:
+   friendly_name: Precipitation Type  
+   
+ sensor.dark_sky_precip_probability:
+   friendly_name: Precipitation Probability 
+   
+ sensor.dark_sky_daily_summary:
+   friendly_name: Weekly Summary    
+   
+ sensor.brittany_to_home:
+   icon: mdi:car   
+   
+ sensor.brittanys_parents_home_to_home:
+   icon: mdi:car
+ 
+ sensor.home_to_brittanys_parents_home:
+   icon: mdi:car
+   
+ sensor.michaels_home_to_parents_home:
+   icon: mdi:car
+   
+ sensor.michaels_home_to_parents_home_2:
+   icon: mdi:car   
+   
+ sensor.work_to_home:
+   icon: mdi:car
+  
+ sensor.home_to_brittany:
+   icon: mdi:car
+   
+ sensor.home_to_work:
+   icon: mdi:car   
+   
+ binary_sensor.__sensor_3_0:
+   friendly_name: Side Door
+   
+ sensor.vision_zp3111_multisensor_4in1_alarm_level_5_1:
+   friendly_name: Alarm Level
+   icon: mdi:alarm
+
+ sensor.vision_zp3111_multisensor_4in1_alarm_type_5_0:
+   friendly_name: Alarm Type
+   icon: mdi:alarm
+  
+ sensor.vision_zp3111_multisensor_4in1_burglar_5_10:
+   friendly_name: Burglar
+   icon: mdi:alarm-mutliple
+  
+ sensor.vision_zp3111_multisensor_4in1_clock_5_14:
+   friendly_name: Clock
+   icon: mdi:clock
+  
+ sensor.vision_zp3111_multisensor_4in1_luminance_5_3:
+   friendly_name: Luminance
+   icon: mdi:lightbulb
+  
+ sensor.vision_zp3111_multisensor_4in1_relative_humidity_5_5:
+   friendly_name: Humidity
+   icon: mdi:water-percent
+  
+ sensor.vision_zp3111_multisensor_4in1_sourcenodeid_5_2:
+   friendly_name: Source Node
+  
+ sensor.vision_zp3111_multisensor_4in1_temperature_5_1:
+   friendly_name: Temperature
+   
+ switch.bike_room_fan:
+   friendly_name: Bike Room Fan
+   icon: mdi:fan
+   
+ switch.bike_room_light:
+   friendly_name: Bike Room Light
+   icon: mdi:lightbulb
+   
+ switch.fireball_light:
+   friendly_name: Fireball Light
+   icon: mdi:lightbulb
+   
+ switch.living_room_light_1:
+   friendly_name: Living Room Light 1
+   icon: mdi:lamp
+   
+ switch.living_room_light_2:
+   friendly_name: Living Room Light 2
+   icon: mdi:lamp
+   
+ switch.living_room_light_3:
+   friendly_name: Living Room Light 3
+   icon: mdi:lightbulb
+   
+ switch.bed_lights:
+   friendly_name: Bed Lights
+   icon: mdi:hotel
+   
+ switch.dresser_lights:
+   friendly_name: Dresser Lights
+   icon: mdi:lightbulb
+   
+ switch.tv_lights:
+   friendly_name: TV Lights
+   icon: mdi:television
+   
+ switch.computer_lights:
+   friendly_name: Computer Room Lights
+   icon: mdi:lightbulb
+   
+ binary_sensor.ecolink_doorwindow_sensor_sensor_3_0:
+   friendly_name: Door Sensor Status
+   icon: mdi:glassdoor
+   
+ sensor.ecolink_doorwindow_sensor_alarm_level_3_1:
+   friendly_name: Alarm Level
+   icon: mdi:glassdoor
+   
+ sensor.ecolink_doorwindow_sensor_alarm_type_3_0:
+   friendly_name: Alarm Type
+   icon: mdi:glassdoor
+   
+ sensor.ecolink_doorwindow_sensor_burglar_3_10:
+   friendly_name: Burglar
+   icon: mdi:glassdoor
+   
+ sensor.ecolink_doorwindow_sensor_sourcenodeid_3_2:
+   friendly_name: Source ID
+   icon: mdi:glassdoor
+   
+   
+   
+   
+   
+
+   
+   

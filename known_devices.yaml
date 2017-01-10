@@ -1,0 +1,16 @@
+
+m_phone_m_phone:
+  hide_if_away: false
+  mac:
+  name: Michael
+  picture: !secretpicture
+  track: true
+  vendor:
+
+b_phone_b_phone:
+  hide_if_away: false
+  mac:
+  name: Brittany
+  picture: !secretpicture
+  track: true
+  vendor:

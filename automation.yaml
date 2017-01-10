@@ -1,0 +1,114 @@
+-  alias: Turn on light when side door opens
+   initial_state: True
+   hide_entity: False
+   trigger:
+     platform: state
+     entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor_3_0
+     state: 'on'
+   action:
+     service: homeassistant.turn_on
+     entity_id: script.timed_lamp
+     
+-  alias: Greet michael after work
+   initial_state: True
+   hide_entity: False
+   trigger:
+     platform: state
+     entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor_3_0
+     state: 'on'
+   condition:
+     - condition: state
+       entity_id: device_tracker.m_phone_m_phone
+       state: 'home'
+     - condition: time
+       after: '15:00:00'   
+   action:
+     service: tts.google_say
+     entity_id: media_player.living_room_home
+     data:
+       message: Welcome home, Michael
+       
+-  alias: Tell Michael have a good day
+   initial_state: True
+   hide_entity: False
+   trigger:
+     platform: state
+     entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor_3_0
+     state: 'on'
+   condition:
+     - condition: state
+       entity_id: device_tracker.m_phone_m_phone
+       state: 'home'
+     - condition: time
+       before: '08:00:00'   
+   action:
+     service: tts.google_say
+     entity_id: media_player.living_room_home
+     data:
+       message: Have a good day, Michael   
+       
+-  alias: Tell Brittany hello
+   initial_state: True
+   hide_entity: False
+   trigger:
+     platform: state
+     entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor_3_0
+     state: 'on'
+   condition:
+     - condition: state
+       entity_id: device_tracker.b_phone_b_phone
+       state: 'home'
+   action:
+     service: tts.google_say
+     entity_id: media_player.living_room_home
+     data:
+       message: Welcome home, Brittany 
+       
+-  alias: Tell google home when motion detected
+   initial_state: True
+   hide_entity: False
+   trigger:
+     platform: numeric_state
+     entity_id: sensor.vision_zp3111_multisensor_4in1_burglar_5_10
+     above: 1
+   action:
+     service: tts.google_say
+     entity_id: media_player.living_room_home
+     data:
+       message: Someone is in the bike room. 
+       
+-   alias: Let me know someone opened the door
+    trigger:
+     platform: state
+     entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor_3_0
+     state: 'on'
+    action:
+      service: persistent_notification.create
+      data:
+        message: "Someone opened the door"
+        title: "Side Door"
+        
+-   alias: Let me know someone is in the bike room
+    trigger:
+     platform: numeric_state
+     entity_id: sensor.vision_zp3111_multisensor_4in1_burglar_5_10
+     above: 1
+    action:
+      service: persistent_notification.create
+      data:
+        message: "Someone is in the bike room"
+        title: "Bike Room"
+        
+-   alias: Turn on bedroom lights at night
+    trigger:
+     platform: time 
+     after: "20:30:00"
+    condition:
+      condition: state
+      entity_id: device_tracker.m_phone_m_phone
+      state: 'home'
+    action:
+      service: homeassistant.turn_on
+      entity_id: group.master_lights
+      data:
+        transition: 3600

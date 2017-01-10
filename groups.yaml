@@ -1,0 +1,182 @@
+############################################################
+#
+#    Groups
+#
+############################################################
+
+ family:
+  view: yes
+  name: Family
+  entities: 
+   - device_tracker.m_phone_m_phone
+   - camera.michaels_location
+   - camera.brittanys_location
+   - group.drive_times
+   - device_tracker.b_phone_b_phone
+   
+ living_room:
+  view: yes
+  name: Living Room
+  entities: 
+   - media_player.living_room_home
+   - media_player.michaels_kodi
+   - media_player.bubbles 
+   - group.living_room_lights
+   
+ master_room:
+  view: yes
+  name: Master Bedroom
+  entities: 
+   - group.master_lights
+   
+ computer_room:
+  view: yes
+  name: Computer Room
+  entities: group.computer_lights
+   
+   
+ biking_room:
+  view: yes
+  name: Bike Room
+  entities: 
+   - switch.bike_room_light
+   - switch.bike_room_fan
+   - media_player.bike_room
+   - group.house_environment
+   - group.door_sensor
+  
+ environment:
+  view: yes
+  name: Weather
+  entities:
+   - sun.sun
+   - sensor.yr_symbol
+   - camera.bloomington_il
+   - group.weather_darksky
+   
+ living_room_lights:
+  name: Living Room Lights
+  entities:
+   - switch.living_room_light_1
+   - switch.living_room_light_2
+   - switch.living_room_light_3
+   - switch.tv_lights
+
+ bike_room_lights:
+  name: Bike Room Lights
+  entities:
+   - switch.bike_room_light
+   
+ bike_room_fans:
+  name: Bike Room Fan
+  entities:
+   - switch.bike_room_fan   
+    
+ kitchen_lights:
+  name: Kitchen Lights
+  entities:
+   - switch.fireball_light
+   
+ computer_lights:
+  name: Computer Room Lights
+  entities:
+   - switch.computer_lights
+   
+ master_lights:
+  name: Master Bedroom Lights
+  entities:
+   - switch.bed_lights
+   - switch.dresser_lights
+   
+ media_players:
+  name: Media Players
+  view: yes
+  entities:
+   - media_player.living_room_home
+   - media_player.michaels_kodi
+   - media_player.bubbles
+   - media_player.bike_room
+   
+     
+ family_track:
+  name: family
+  view: no
+  entities:
+   - device_tracker.b_phone_b_phone
+   - device_tracker.m_phone_m_phone
+   
+ network:
+   name: Network
+   view: yes
+   entities: 
+    - group.computer
+    - group.internet
+    
+ weather_darksky:
+  name: Weather Information
+  entities:
+   - sensor.dark_sky_summary
+   - sensor.dark_sky_temperature
+   - sensor.dark_sky_apparent_temperature
+   - sensor.dark_sky_daily_high_temperature
+   - sensor.dark_sky_daily_low_temperature
+   - sensor.dark_sky_wind_speed
+   - sensor.dark_sky_humidity
+   - sensor.dark_sky_cloud_coverage
+   - sensor.dark_sky_precip
+   - sensor.dark_sky_precip_probability
+   - sensor.dark_sky_daily_summary
+
+ internet:
+   name: Internet
+   entities:
+    - sensor.speedtest_download
+    - sensor.speedtest_ping
+    - sensor.speedtest_upload
+    
+ computer:
+  name: Computer Analytics
+  entities: 
+   - sensor.cpu
+   - sensor.cpu_use
+   - sensor.disk_use_home
+   - sensor.ram_free
+   
+ drive_times:
+  name: Driving Times
+  entities:
+   - sensor.home_to_work
+   - sensor.work_to_home
+   - sensor.home_to_brittany
+   - sensor.brittany_to_home
+   - sensor.michaels_home_to_parents_home
+   - sensor.michaels_home_to_parents_home_2
+   - sensor.home_to_brittanys_parents_home
+   - sensor.brittanys_parents_home_to_home
+   
+ House_Environment:
+   name: House Information
+   entities:
+     - binary_sensor.vision_zp3111_multisensor_4in1_sensor_5_0
+     - sensor.vision_zp3111_multisensor_4in1_alarm_level_5_1
+     - sensor.vision_zp3111_multisensor_4in1_alarm_type_5_0
+     - sensor.vision_zp3111_multisensor_4in1_burglar_5_10
+     - sensor.vision_zp3111_multisensor_4in1_clock_5_14
+     - sensor.vision_zp3111_multisensor_4in1_luminance_5_3
+     - sensor.vision_zp3111_multisensor_4in1_relative_humidity_5_5
+     - sensor.vision_zp3111_multisensor_4in1_sourcenodeid_5_2
+     - sensor.vision_zp3111_multisensor_4in1_temperature_5_1
+     
+ door_sensor:
+   name: Door Sensor
+   entities:
+     - sensor.ecolink_doorwindow_sensor_alarm_level_3_1
+     - sensor.ecolink_doorwindow_sensor_alarm_type_3_0
+     - sensor.ecolink_doorwindow_sensor_burglar_3_10
+     - sensor.ecolink_doorwindow_sensor_sourcenodeid_3_2
+     - binary_sensor.ecolink_doorwindow_sensor_sensor_3_0
+     
+     
+     
+     
+     
