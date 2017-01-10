@@ -29,7 +29,7 @@ IFTTT - 35 Google Assitant Commands
 CloudMQTT Account for phone tracking
 
 ![Alt text](http://i.imgur.com/ixusQ64.png "Family - Icons with status, Drive times by Google, Image locations by Google")
-Family - Icons with status, Drive times by Google and image locations by Google
+Family - Icons with status, Drive times by Google, and image locations by Google
 
 ![Alt text](http://i.imgur.com/5OLWiTw.png "Living Room - 4 Lights, 1 Chromecast, 1 Kodi Player, 1 Google Home")
 Living Room - 4 Lights, 1 Chromecast, 1 Kodi Player, and 1 Google Home
