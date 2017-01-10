@@ -1,4 +1,4 @@
-
+#owntracks phone
 m_phone_m_phone:
   hide_if_away: false
   mac:
@@ -6,7 +6,7 @@ m_phone_m_phone:
   picture: !secretpicture
   track: true
   vendor:
-
+#owntracks phone
 b_phone_b_phone:
   hide_if_away: false
   mac:
