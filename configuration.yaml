@@ -17,6 +17,7 @@ homeassistant:
 # Enables the frontend
 frontend:
 
+#http information
 http:
   api_password: !secretpassword
   
@@ -54,7 +55,7 @@ tts:
 #automation
 automation: !include automation.yaml
   
-    
+#script to turn on light for 2 minutes when I enter home    
 script:
   timed_lamp:
     alias: "Turn on lamp and set timer"
@@ -86,7 +87,7 @@ zwave:
   usb_path: /dev/ttyACM0
   config_path: /srv/homeassistant/homeassistant_venv/lib/python3.4/site-packages/libopenzwave-0.3.1-py3.4-linux-armv7l.egg/config
 
-
+#kodi 
 media_player 1:
   platform: kodi
   name: Michaels Kodi
@@ -100,19 +101,21 @@ camera:
   still_image_url: https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=ILX&brand=wui&num=10&delay=15&type=N0R&frame=0&scale=1.000&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=400&centery=240&transx=0&transy=0&showlabels=1&severe=0&rainsnow=1&lightning=0&smooth=0&rand=24716163&lat=0&lon=0&label=you
   name: !secretname 
   
+#My location on Google Map  
 camera 2:
   name: Michaels Location
   platform: generic
   still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.m_phone_m_phone.attributes.latitude }},{{ states.device_tracker.m_phone_m_phone.attributes.longitude }}&zoom=13&size=500x500&maptype=roadmap&markers=color:red%7Clabel:Michael%7C{{ states.device_tracker.m_phone_m_phone.attributes.latitude }},{{ states.device_tracker.m_phone_m_phone.attributes.longitude }}
   limit_refetch_to_url_change: true
-  
+ 
+#Brittany's location on Google Map 
 camera 3:
   name: Brittanys Location
   platform: generic
   still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.b_phone_b_phone.attributes.latitude }},{{ states.device_tracker.b_phone_b_phone.attributes.longitude }}&zoom=13&size=500x500&maptype=roadmap&markers=color:red%7Clabel:Brittany%7C{{ states.device_tracker.b_phone_b_phone.attributes.latitude }},{{ states.device_tracker.b_phone_b_phone.attributes.longitude }}
   limit_refetch_to_url_change: true  
   
-  
+#DarkSky weather data  
 sensor 2:
   platform: darksky
   api_key: !secretapi
@@ -130,7 +133,7 @@ sensor 2:
    - temperature_min
   
 
-#cpu
+#Speedtest.net data for RPi
 sensor 3:
   platform: speedtest
   minute:
@@ -140,11 +143,13 @@ sensor 3:
     - ping
     - download
     - upload
-    
+
+#RPi cpu data
 sensor 4:
   platform: cpuspeed
   name: CPU
   
+#RPi cpu data  
 sensor 5:
   platform: systemmonitor
   resources:
@@ -152,7 +157,8 @@ sensor 5:
       arg: /home
     - type: memory_free
     - type: processor_use  
-  
+
+#Google Travel Times
 sensor 6:
   - platform: google_travel_time
     name: Home to Work
@@ -204,8 +210,6 @@ sensor 6:
     origin: !secretlocation
     destination: zone.home
   
-  
-      
 #Switches      
 switch: !include switch.yaml
 
